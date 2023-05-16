@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  api_gateway:
+    build: .
+    ports:
+      - "8000:8000"
+
+    volumes:
+      - ./:/app
+
+    environment:
+      - "SERVICE=gateway"
+
+
+  service_1:
+    build: .
+    environment:
+      - "SERVICE=service1"
+
+    ports:
+      - "8001:8000"
+
+    volumes:
+      - ./:/app
+
+  service_2:
+    build: .
+    environment:
+      - "SERVICE=service2"
+
+    ports:
+      - "8002:8000"
+
+    volumes:
+      - ./:/app
